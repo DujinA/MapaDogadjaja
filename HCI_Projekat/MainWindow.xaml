@@ -1,0 +1,96 @@
+﻿<Window x:Class="HCI_Projekat.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HCI_Projekat"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Početna Strana" Height="720" Width="1080">
+    <DockPanel>
+        <Grid>
+            <Grid x:Name="GridMenu" Width="250" HorizontalAlignment="Left" Margin="0 0 0 0" Background="White" RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <Border BorderThickness="0">
+                    <Border.BorderBrush>
+                        <LinearGradientBrush StartPoint="0,0"
+                                 EndPoint="0,1">
+                            <LinearGradientBrush.GradientStops>
+                                <GradientStopCollection>
+                                    <GradientStop Color="#2b2e4a"
+                                                Offset="0.0" />
+                                    <GradientStop Color="#2b2e4a"
+                                                Offset="1.0" />
+                                </GradientStopCollection>
+                            </LinearGradientBrush.GradientStops>
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1"
+                                 StartPoint="0.5,0">
+                            <GradientStop Color="#2b2e4a"
+                                        Offset="0" />
+                            <GradientStop Color="#2b2e4a"
+                                        Offset="1" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    </Border>
+                <StackPanel>
+                    <ListView x:Name ="Menu" Foreground="#FF313131" BorderThickness="0" Background="#2b2e4a" Padding="0" FontFamily="Champagne &amp; Limousines" FontSize="18">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="Padding" Value="0"/>
+                                <Setter Property="Margin" Value="0"/>
+                                <Setter Property="Height" Value="45"/>
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="Background" Value="#2b2e4a"/>
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                                
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListViewItem PreviewMouseLeftButtonDown="HomeMenuItem_Click">
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="Map" Width="20" Height="20" Foreground="White" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Mapa dogadjaja" Margin="10" Foreground="White"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem PreviewMouseLeftButtonDown="EventMenuItem_Click">
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="Event" Width="20" Height="20" Foreground="White" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Dogadjaji" Margin="10" Foreground="White"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem PreviewMouseLeftButtonDown="EventTypeMenuItem_Click">
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="EventEdit" Width="20" Height="20" Foreground="White" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Tipovi" Margin="10" Foreground="White"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem PreviewMouseLeftButtonDown="EventLabelMenuItem_Click">
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="Label" Width="20" Height="20" Foreground="White" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Etikete" Margin="10" Foreground="White"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <!--<ListViewItem >
+                            <StackPanel Orientation="Horizontal" Margin="10 0">
+                                <materialDesign:PackIcon Kind="Settings" Width="20" Height="20" Foreground="white" Margin="5" VerticalAlignment="Center"/>
+                                <TextBlock Text="Settings" Margin="10" Foreground="white"/>
+                            </StackPanel>
+                        </ListViewItem>-->
+                    </ListView>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Frame x:Name="frame" Source="Views/MainPage.xaml" NavigationUIVisibility="Hidden"/>
+    </DockPanel>
+</Window>

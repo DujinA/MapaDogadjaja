@@ -1,0 +1,66 @@
+﻿<Window x:Class="HCI_Projekat.views.AddEvent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        DataContext="{Binding}"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title="Dodavanje novog dogadjaja" Height="702" Width="600">
+    <Grid AllowDrop="True" Background="Beige" Width="600" Margin="0,0,-6,-1">
+        <Label Margin="10,15,0,0" Name="label1" FontStretch="Normal" FontSize="14" AllowDrop="False" VerticalContentAlignment="Top" FontWeight="Normal" FontStyle="Normal" Content="Oznaka:" HorizontalAlignment="Left" Width="60" Height="27" VerticalAlignment="Top" />
+        <TextBox Margin="130,20,0,0" Name="textBox1" HorizontalAlignment="Left" Width="140" Height="21" VerticalAlignment="Top" Text="{Binding Id, Mode=TwoWay}"  PreviewTextInput="textBox1_PreviewTextInput">
+            <TextBox.ToolTip>
+                <TextBlock>
+                Polje za unos oznake.
+                <LineBreak />
+                Oznaka mora biti jedinstvena.
+                <LineBreak />
+                Oznaka se sastoji malih slova i brojeva.
+                </TextBlock>
+            </TextBox.ToolTip>
+        </TextBox>
+        <Label Content="Naziv:" Margin="10,45,0,0" Name="label2" FontSize="12" Height="27" VerticalAlignment="Top" HorizontalAlignment="Left" Width="60" />
+        <TextBox Margin="130,50,0,0" Name="eventName" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="140" Text="{Binding Name, Mode=TwoWay}" PreviewTextInput="eventNamePreviewTextInput">
+            <TextBox.ToolTip>
+                <TextBlock>
+                    Polje za unos naziva dogadjaja.
+                    <LineBreak />
+                    Za naziv dogadjaja je dozvoljena upotreba svih karaktera.
+                </TextBlock>
+            </TextBox.ToolTip>
+        </TextBox>
+        <TextBox Height="75" HorizontalAlignment="Left" Margin="130,290,0,0" Name="textBox3" VerticalAlignment="Top" Width="140" Text="{Binding Description, Mode=TwoWay}" ToolTip="Polje u koje se unosi kratak opis dogadjaja" PreviewTextInput="textBox3_PreviewTextInput" />
+        <Label Content="Tip:" Margin="10,75,0,0" Name="label4" HorizontalAlignment="Left" Width="60" Height="28" VerticalAlignment="Top" />
+        <ComboBox Margin="130,80,0,0" Name="textBox4" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="140" ItemsSource="{Binding Types, Mode=TwoWay}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ToolTip="Izabrati željeni tip dogadjaja od ponuđenih tipova iz padajuće liste."/>
+        <Label Content="Posećenost:" Margin="10,105,0,0" Name="label5" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="104" />
+        <ComboBox Margin="130,110,0,0" Name="comboBox1" HorizontalAlignment="Left" Width="140" Height="23" VerticalAlignment="Top" Text="{Binding Attendance, Mode=TwoWay}" ItemsSource="{Binding AttendanceList}" ToolTip="Izabrati iz padajuće liste broj ljudi koji bi trebalo da prisustvuju dogadjaju." />
+        <Label Content="Humanitaran:" HorizontalAlignment="Left" Margin="10,135,0,0" Name="label8" Height="28" VerticalAlignment="Top" Width="127" />
+        <RadioButton Content="Da" Height="16" HorizontalAlignment="Left" Margin="130,145,0,0" Name="radioButton5" VerticalAlignment="Top" GroupName="rezervacija" IsChecked="{Binding HumanitarianEventTrue, Mode=TwoWay}" />
+        <RadioButton Content="Ne" Height="16" HorizontalAlignment="Left" Margin="190,145,0,0" Name="radioButton6" VerticalAlignment="Top" GroupName="rezervacija" IsChecked="{Binding HumanitarianEventFalse, Mode=TwoWay}" />
+        <Label Content="Cena održavanja:" Height="27" HorizontalAlignment="Left" Margin="10,165,0,0" Name="label9" VerticalAlignment="Top" />
+        <TextBox Height="23" Margin="130,170,0,0" Name="textBox7" VerticalAlignment="Top" HorizontalAlignment="Left" Width="140" Text="{Binding Cost, Mode=TwoWay}" ToolTip="Cena održavanja dogadjaja je izražena u USD." />
+        <Label Content="Država:" Height="27" Margin="10,195,0,0" Name="label10" VerticalAlignment="Top" HorizontalAlignment="Left" Width="60" />
+        <TextBox Height="23" Margin="130,200,0,0" Name="textBox5" VerticalAlignment="Top" HorizontalAlignment="Left" Width="140" Text="{Binding Country, Mode= TwoWay}" />
+        <Label Content="Grad:" Height="27" Margin="10,225,0,0" Name="label13" VerticalAlignment="Top" HorizontalAlignment="Left" Width="60" />
+        <TextBox Height="23" Margin="130,230,0,0" Name="textBox2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="140" Text="{Binding City, Mode= TwoWay}" />
+        <Label Content="Datum održavanja:" Height="27" HorizontalAlignment="Left" Margin="10,255,0,0" Name="label11" VerticalAlignment="Top" Width="117" />
+        <DatePicker Height="25" HorizontalAlignment="Left" Name="datePicker" VerticalAlignment="Top" Width="140" Text="{Binding Mode=TwoWay, Path=Date}"  Margin="130,260,0,0" SelectedDate="{Binding Now}" DisplayDateStart="{x:Static sys:DateTime.Now}"
+                   CalendarStyle="{DynamicResource CalenderControlTemplate}">
+        </DatePicker>
+        <Label Content="Opis:" Height="27" Margin="10,285,0,0" Width="60" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Button Content="OK" Margin="436,0,0,85" Name="button1" Height="25" VerticalAlignment="Bottom" Click="button1_Click_1" HorizontalAlignment="Left" Width="75" />
+        <Button Content="Odustani" HorizontalAlignment="Left" Margin="317,0,0,85" Name="button2" Width="75" Click="button2_Click" VerticalAlignment="Bottom" Height="23"/>
+        <Label Content="Ikonica:" Height="27" HorizontalAlignment="Left" Margin="350,385,0,0" Name="label12" VerticalAlignment="Top" Width="48" />
+        <Image Height="32" HorizontalAlignment="Left" Margin="420,425,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="32" Source="{Binding Icon, Mode=TwoWay}" ToolTip="Ikonica dogadjaja." />
+        <Label Content="Trenutne etikete:" Height="27" Width="98" Margin="10,385,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ListBox Margin="130,380,0,0" Height="75" VerticalAlignment="Top" HorizontalAlignment="Left" Width="140" Name="listBox" ItemsSource="{Binding LabelsList, Mode=TwoWay}" SelectionMode="Multiple" ToolTip="Lista dostupnih etiketa." SelectionChanged="listBox_SelectionChanged">
+        </ListBox>
+
+        <!--Button Content="Dodaj novu etiketu" Height="23" Width="110" Margin="41,551,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Button_Click_2" />-->
+        <Button Content="Izaberi ikonicu" Height="23" VerticalAlignment="Top" Margin="420,387,0,0" HorizontalAlignment="Left" Width="90" Click="button_Click_1" />
+        <Label Content="USD" Height="27" FontSize="14"  HorizontalAlignment="Left" Margin="270,165,0,0" VerticalAlignment="Top" Width="47" />
+    </Grid>
+</Window>
